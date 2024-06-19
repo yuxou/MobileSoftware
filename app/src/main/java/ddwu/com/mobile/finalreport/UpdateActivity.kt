@@ -21,8 +21,8 @@ class UpdateActivity : AppCompatActivity() {
 
         val dto = intent.getSerializableExtra("dto") as MovieDTO
 
+        updateBinding.etUpdateTitle.setText(dto.title)
         updateBinding.etUpdateImage.setText(dto.image)
-        updateBinding.etUpdateTitle.setText(dto.image)
         updateBinding.rbUpdateRate.rating = dto.rate
         updateBinding.etUpdateActor.setText(dto.actor)
         updateBinding.etUpdateDirector.setText(dto.director)
@@ -30,8 +30,8 @@ class UpdateActivity : AppCompatActivity() {
         updateBinding.etUpdateWatchDate.setText(dto.watchDate)
 
         updateBinding.btnUpdateSave.setOnClickListener {
-            dto.image = updateBinding.etUpdateImage.text.toString()
             dto.title = updateBinding.etUpdateTitle.text.toString()
+            dto.image = updateBinding.etUpdateImage.text.toString()
             dto.rate = updateBinding.rbUpdateRate.rating
             dto.actor = updateBinding.etUpdateActor.text.toString()
             dto.director = updateBinding.etUpdateDirector.text.toString()
@@ -58,8 +58,8 @@ class UpdateActivity : AppCompatActivity() {
         val db = helper.writableDatabase
 
         val updateValue = ContentValues().apply {
-            put(MovieDBHelper.COL_IMAGE, dto.image)
             put(MovieDBHelper.COL_TITLE, dto.title)
+            put(MovieDBHelper.COL_IMAGE, dto.image)
             put(MovieDBHelper.COL_RATE, dto.rate)
             put(MovieDBHelper.COL_ACTOR, dto.actor)
             put(MovieDBHelper.COL_DIRECTOR, dto.director)

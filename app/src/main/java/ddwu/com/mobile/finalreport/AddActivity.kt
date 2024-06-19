@@ -20,8 +20,8 @@ class AddActivity : AppCompatActivity() {
         setContentView(addMovieBinding.root)
 
         addMovieBinding.btnAddSave.setOnClickListener {
-            val image = addMovieBinding.etAddImage.text.toString()
             val title = addMovieBinding.etAddTitle.text.toString()
+            val image = addMovieBinding.etAddImage.text.toString()
             val rate = addMovieBinding.rbAddRate.rating
             val actor = addMovieBinding.etAddActor.text.toString()
             val director = addMovieBinding.etAddDirector.text.toString()
@@ -29,7 +29,7 @@ class AddActivity : AppCompatActivity() {
             val watchDate = addMovieBinding.etAddWatchDate.text.toString()
 
             if (title.isNotEmpty() && rate > 0 && watchDate.isNotEmpty()) {
-                if (addMovie(MovieDTO(0, image, title, rate, actor, director, releaseDate, watchDate)) > 0
+                if (addMovie(MovieDTO(0, title, image, rate, actor, director, releaseDate, watchDate)) > 0
                 ) {
                     setResult(RESULT_OK)
                 } else {
@@ -51,8 +51,8 @@ class AddActivity : AppCompatActivity() {
         val db = helper.writableDatabase
 
         val newValue = ContentValues().apply {
-            put(MovieDBHelper.COL_IMAGE, newDTO.image)
             put(MovieDBHelper.COL_TITLE, newDTO.title)
+            put(MovieDBHelper.COL_IMAGE, newDTO.image)
             put(MovieDBHelper.COL_RATE, newDTO.rate)
             put(MovieDBHelper.COL_ACTOR, newDTO.actor)
             put(MovieDBHelper.COL_DIRECTOR, newDTO.director)
