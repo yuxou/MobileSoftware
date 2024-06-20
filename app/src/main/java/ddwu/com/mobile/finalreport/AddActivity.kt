@@ -31,8 +31,10 @@ class AddActivity : AppCompatActivity() {
                 if (addMovie(MovieDTO(0, title, image, rate, actor, director, releaseDate, watchDate)) > 0
                 ) {
                     setResult(RESULT_OK)
+                    Toast.makeText(this, "영화가 추가되었습니다.", Toast.LENGTH_SHORT).show()
                 } else {
                     setResult(RESULT_CANCELED)
+                    Toast.makeText(this, "영화 추가에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
                 finish()
             } else {
@@ -41,6 +43,7 @@ class AddActivity : AppCompatActivity() {
         }
         addMovieBinding.btnAddCancel.setOnClickListener {
             setResult(RESULT_CANCELED)
+            Toast.makeText(this, "추가가 취소되었습니다.", Toast.LENGTH_SHORT).show()
             finish()
         }
     }

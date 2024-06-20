@@ -1,76 +1,116 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="기록 수정"
-        android:textSize="24sp"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:id="@+id/etUpdateImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이미지 추가"
-        android:layout_gravity="center_horizontal"/>
-
-    <EditText
-        android:id="@+id/etUpdateTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="영화명" />
+    android:layout_height="match_parent">
 
     <RatingBar
         android:id="@+id/rbUpdateRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
         android:numStars="5"
-        android:stepSize="1.0" />
+        android:stepSize="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateTitle" />
+
+    <Button
+        android:id="@+id/etUpdateImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="이미지 추가"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/etUpdateActor"
-        android:layout_width="match_parent"
+        android:id="@+id/etUpdateTitle"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="주연" />
+        android:layout_marginTop="25dp"
+        android:hint="영화명"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateImage" />
 
-    <EditText
-        android:id="@+id/etUpdateDirector"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnUpdateSave"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="감독" />
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:text="수정"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdateCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateWatchDate" />
 
-    <EditText
-        android:id="@+id/etUpdateReleaseDate"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnUpdateCancel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="개봉일" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="110dp"
+        android:text="취소"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdateSave"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateWatchDate" />
 
     <EditText
         android:id="@+id/etUpdateWatchDate"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="관람 날짜" />
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:hint="관람 날짜"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateReleaseDate" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_marginTop="35dp"
+        android:text="기록 수정"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnUpdateSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="수정" />
+    <EditText
+        android:id="@+id/etUpdateActor"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:hint="주연"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbUpdateRate" />
 
-        <Button
-            android:id="@+id/btnUpdateCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="취소" />
-    </LinearLayout>
-</LinearLayout>
+    <EditText
+        android:id="@+id/etUpdateReleaseDate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="개봉일"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateDirector" />
+
+    <EditText
+        android:id="@+id/etUpdateDirector"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:hint="감독"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateActor" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

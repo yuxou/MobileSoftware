@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/textTitle"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/movie1"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageProfile"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:text="분반: 01\n학번: 20220777\n성명: 신유주\n이메일: luna01180@naver.com"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

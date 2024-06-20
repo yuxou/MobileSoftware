@@ -1,76 +1,124 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="기록 추가"
-        android:textSize="24sp"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:id="@+id/etAddImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이미지 추가"
-        android:layout_gravity="center_horizontal"/>
-
-    <EditText
-        android:id="@+id/etAddTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="영화명" />
 
     <RatingBar
         android:id="@+id/rbAddRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:numStars="5"
-        android:stepSize="1.0" />
+        android:stepSize="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddTitle" />
+
+    <Button
+        android:id="@+id/etAddImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="이미지 추가"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/etAddActor"
-        android:layout_width="match_parent"
+        android:id="@+id/etAddTitle"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="주연" />
-
-    <EditText
-        android:id="@+id/etAddDirector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="감독" />
-
-    <EditText
-        android:id="@+id/etAddReleaseDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="개봉일" />
+        android:layout_marginTop="20dp"
+        android:hint="영화명"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddImage" />
 
     <EditText
         android:id="@+id/etAddWatchDate"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="관람 날짜" />
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        android:hint="관람 날짜"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddReleaseDate" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_marginTop="35dp"
+        android:text="기록 추가"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnAddSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="완료" />
+    <EditText
+        android:id="@+id/etAddActor"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="주연"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbAddRate" />
 
-        <Button
-            android:id="@+id/btnAddCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="취소" />
-    </LinearLayout>
-</LinearLayout>
+    <EditText
+        android:id="@+id/etAddReleaseDate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        android:hint="개봉일"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddDirector" />
+
+    <EditText
+        android:id="@+id/etAddDirector"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        android:hint="감독"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddActor" />
+
+    <Button
+        android:id="@+id/btnAddSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:text="완료"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddWatchDate"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnAddCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="110dp"
+        android:text="취소"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAddSave"
+        app:layout_constraintTop_toBottomOf="@+id/etAddWatchDate"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

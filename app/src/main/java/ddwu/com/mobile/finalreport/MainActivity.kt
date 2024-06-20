@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
-
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         movies = movieDAO.getAllMovies()
 
@@ -57,6 +55,30 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            REQ_UPDATE -> {
+                if (resultCode == RESULT_OK) {
+                    movies.clear()
+                    movies.addAll(movieDAO.getAllMovies())
+                    binding.recyclerView.adapter?.notifyDataSetChanged()
+                } else {
+                    Toast.makeText(this@MainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            REQ_ADD -> {
+                if (resultCode == RESULT_OK) {
+                    movies.clear()
+                    movies.addAll(movieDAO.getAllMovies())
+                    binding.recyclerView.adapter?.notifyDataSetChanged()
+                } else {
+                    Toast.makeText(this@MainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
      private fun showDeleteDialog(position: Int) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage("${movies[position].title} 기록을 삭제하시겠습니까?")
@@ -73,24 +95,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-        return true
+        return super .onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+        val builder = AlertDialog.Builder(this@MainActivity)
+        when(item.itemId) {
             R.id.action_add -> {
                 startActivity(Intent(this, AddActivity::class.java))
-                true
             }
             R.id.action_about -> {
                 startActivity(Intent(this, AboutActivity::class.java))
-                true
             }
             R.id.action_exit -> {
-                finish()
-                true
+                AlertDialog.Builder(this@MainActivity)
+                    .setTitle("앱 종료")
+                    .setMessage("앱을 종료하시겠습니까?")
+                    .setPositiveButton("종료") { dialog, _ ->
+                        dialog.dismiss()
+                        finish()
+                    }
+                    .setNegativeButton("취소") { dialog, _ ->
+                        dialog.dismiss()
+                    }
             }
-            else -> super.onOptionsItemSelected(item)
         }
+        return super.onOptionsItemSelected(item)
     }
 }

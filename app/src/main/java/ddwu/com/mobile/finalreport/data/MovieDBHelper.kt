@@ -33,11 +33,11 @@ class MovieDBHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME, null
         db?.execSQL(CREATE_TABLE)
 
         // 샘플 데이터 삽입
-        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (03, '엘리멘탈', ${R.mipmap.movie4}, 4.5, '레아 루이스, 마무두 아티', '피터 손', '2023-06-14', '2023-06-15')")
-        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (01, '인사이드아웃2', ${R.mipmap.movie1}, 4.5, '에이미 포엘러, 마야 호크', '켈시 맨', '2024-06-12', '2024-06-14')")
-        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (02, '파묘', ${R.mipmap.movie2}, 5.0, '최민식, 김고은', '장재현', '2024-02-22', '2024-02-25')")
-        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (03, '웡카', ${R.mipmap.movie3}, 4.0, '티모시 샬라메', '폴 킹', '2024-01-31','2024-01-31')")
-        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (03, '혹성탈출4', ${R.mipmap.movie5}, 3.5, '오웬 티그, 프레이아 앨런', '웨스 볼', '2024-05-08', '2024-05-12')")
+        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (01, '엘리멘탈', ${R.mipmap.movie4}, 4.5, '레아 루이스, 마무두 아티', '피터 손', '2023-06-14', '2023-06-15')")
+        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (02, '인사이드아웃2', ${R.mipmap.movie1}, 4.5, '에이미 포엘러, 마야 호크', '켈시 맨', '2024-06-12', '2024-06-14')")
+        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (03, '파묘', ${R.mipmap.movie2}, 5.0, '최민식, 김고은', '장재현', '2024-02-22', '2024-02-25')")
+        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (04, '웡카', ${R.mipmap.movie3}, 4.0, '티모시 샬라메', '폴 킹', '2024-01-31','2024-01-31')")
+        db?.execSQL("INSERT INTO $TABLE_NAME VALUES (05, '혹성탈출4', ${R.mipmap.movie5}, 3.5, '오웬 티그, 프레이아 앨런', '웨스 볼', '2024-05-08', '2024-05-12')")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVer: Int, newVer: Int) {
