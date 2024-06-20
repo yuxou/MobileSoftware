@@ -17,6 +17,7 @@ class MovieAdapter (private val movies : ArrayList<MovieDTO>)
     inner class MovieViewHolder(val itemBinding: ItemMovieBinding)
         : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(movie: MovieDTO) {
+            itemBinding.poster.setImageResource(movie.image)
             itemBinding.title.text = movie.title
             itemBinding.rating.text = movie.rate.toString()
             itemBinding.watchDate.text = movie.watchDate

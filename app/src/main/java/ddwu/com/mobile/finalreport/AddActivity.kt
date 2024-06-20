@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import ddwu.com.mobile.finalreport.data.MovieDBHelper
 import ddwu.com.mobile.finalreport.data.MovieDTO
-import ddwu.com.mobile.finalreport.data.MovieDAO
 import ddwu.com.mobile.finalreport.databinding.ActivityAddMovieBinding
 
 class AddActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class AddActivity : AppCompatActivity() {
 
         addMovieBinding.btnAddSave.setOnClickListener {
             val title = addMovieBinding.etAddTitle.text.toString()
-            val image = addMovieBinding.etAddImage.text.toString()
+            val image = addMovieBinding.etAddImage.text.toString().toIntOrNull() ?: 0
             val rate = addMovieBinding.rbAddRate.rating
             val actor = addMovieBinding.etAddActor.text.toString()
             val director = addMovieBinding.etAddDirector.text.toString()

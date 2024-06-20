@@ -5,7 +5,7 @@ import java.io.Serializable
 data class MovieDTO(
     var id: Int,
     var title: String,
-    var image: String?,
+    var image: Int,
     var rate: Float,
     var actor: String?,
     var director: String?,

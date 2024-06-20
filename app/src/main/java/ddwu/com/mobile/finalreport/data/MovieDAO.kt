@@ -3,8 +3,6 @@ package ddwu.com.mobile.finalreport.data
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.BaseColumns
-import ddwu.com.mobile.finalreport.data.MovieDBHelper
-import ddwu.com.mobile.finalreport.data.MovieDTO
 
 class MovieDAO (val context: Context) {
     fun deleteMovie(dto: MovieDTO): Int {
@@ -28,7 +26,7 @@ class MovieDAO (val context: Context) {
             while (moveToNext()) {
                 val id = getInt(getColumnIndex(BaseColumns._ID))
                 val title = getString(getColumnIndex(MovieDBHelper.COL_TITLE))
-                val image = getString(getColumnIndex(MovieDBHelper.COL_IMAGE))
+                val image = getInt(getColumnIndex(MovieDBHelper.COL_IMAGE))
                 val rate = getFloat(getColumnIndex(MovieDBHelper.COL_RATE))
                 val actor = getString(getColumnIndex(MovieDBHelper.COL_ACTOR))
                 val director = getString(getColumnIndex(MovieDBHelper.COL_DIRECTOR))

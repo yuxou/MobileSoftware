@@ -31,7 +31,7 @@ class UpdateActivity : AppCompatActivity() {
 
         updateBinding.btnUpdateSave.setOnClickListener {
             dto.title = updateBinding.etUpdateTitle.text.toString()
-            dto.image = updateBinding.etUpdateImage.text.toString()
+            dto.image = updateBinding.etUpdateImage.text.toString().toIntOrNull() ?: 0
             dto.rate = updateBinding.rbUpdateRate.rating
             dto.actor = updateBinding.etUpdateActor.text.toString()
             dto.director = updateBinding.etUpdateDirector.text.toString()
