@@ -1,6 +1,9 @@
 package ddwu.com.mobile.finalreport
 
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.ContentValues
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.BaseColumns
@@ -15,9 +18,30 @@ class UpdateActivity : AppCompatActivity() {
         ActivityUpdateMovieBinding.inflate(layoutInflater)
     }
 
+    var calendar = Calendar.getInstance()
+    var year = calendar.get(Calendar.YEAR)
+    var month = calendar.get(Calendar.MONTH)
+    var day = calendar.get(Calendar.DAY_OF_MONTH)
+
+    @SuppressLint("SetTextI18n")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(updateBinding.root)
+
+        updateBinding.releaseCal.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, { _, year, month, dayOfMonth ->
+                updateBinding.etUpdateReleaseDate.setText("$year-${month + 1}-$dayOfMonth")
+            }, year, month, day)
+            datePickerDialog.show()
+        }
+
+        updateBinding.watchCal.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, { _, year, month, dayOfMonth ->
+                updateBinding.etUpdateWatchDate.setText("$year-${month + 1}-$dayOfMonth")
+            }, year, month, day)
+            datePickerDialog.show()
+        }
 
         val dto = intent.getSerializableExtra("dto") as MovieDTO
 

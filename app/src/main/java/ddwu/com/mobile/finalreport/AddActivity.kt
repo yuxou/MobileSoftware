@@ -1,6 +1,9 @@
 package ddwu.com.mobile.finalreport
 
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.ContentValues
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,9 +17,29 @@ class AddActivity : AppCompatActivity() {
         ActivityAddMovieBinding.inflate(layoutInflater)
     }
 
+    var calendar = Calendar.getInstance()
+    var year = calendar.get(Calendar.YEAR)
+    var month = calendar.get(Calendar.MONTH)
+    var day = calendar.get(Calendar.DAY_OF_MONTH)
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(addMovieBinding.root)
+
+        addMovieBinding.releaseCal.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, { _, year, month, dayOfMonth ->
+                addMovieBinding.etAddReleaseDate.setText("$year-${month + 1}-$dayOfMonth")
+            }, year, month, day)
+            datePickerDialog.show()
+        }
+
+        addMovieBinding.watchCal.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(this, { _, year, month, dayOfMonth ->
+                addMovieBinding.etAddWatchDate.setText("$year-${month + 1}-$dayOfMonth")
+            }, year, month, day)
+            datePickerDialog.show()
+        }
 
         addMovieBinding.btnAddSave.setOnClickListener {
             val title = addMovieBinding.etAddTitle.text.toString()

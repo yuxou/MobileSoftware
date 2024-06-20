@@ -9,12 +9,15 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="156dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="15dp"
-        android:text=" MOVIE  🎬"
-        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="MOVIE REVIEW  🎬"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

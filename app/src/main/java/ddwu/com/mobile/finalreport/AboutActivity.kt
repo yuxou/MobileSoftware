@@ -9,7 +9,6 @@ class AboutActivity : AppCompatActivity() {
     val aboutBinding by lazy {
         ActivityAboutBinding.inflate(layoutInflater)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(aboutBinding.root)
