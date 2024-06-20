@@ -1,4 +1,5 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_add"
         android:title="기록 추가"
@@ -7,8 +8,17 @@
         android:id="@+id/action_about"
         android:title="개발자 소개"
         android:orderInCategory="100" />
+
     <item
         android:id="@+id/action_exit"
         android:title="앱 종료"
         android:orderInCategory="100"/>
+
+    <item
+        android:id="@+id/action_search"
+        android:title="검색"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:icon="@android:drawable/ic_menu_search" />
+
 </menu>

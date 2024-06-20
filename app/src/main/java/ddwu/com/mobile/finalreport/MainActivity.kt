@@ -17,6 +17,7 @@ import android.widget.Adapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import ddwu.com.mobile.finalreport.data.MovieDAO
 import ddwu.com.mobile.finalreport.data.MovieDTO
@@ -98,6 +99,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (!newText.isNullOrBlank()) {
+                    val filter = movieDAO.searchMovies(newText)
+                    (binding.recyclerView.adapter as MovieAdapter).apply {
+                        movies.clear()
+                        movies.addAll(filter)
+                        notifyDataSetChanged()
+                    }
+                } else {
+                    updateList()
+                }
+                return true
+            }
+        })
         return super .onCreateOptionsMenu(menu)
     }
 
