@@ -1,5 +1,13 @@
 package ddwu.com.mobile.finalreport
 
+/*
+과제명: 영화 리뷰 앱
+분반: 01분반
+학번: 20220777
+성명: 신유주
+제출일: 2024년 6월
+ */
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -55,31 +63,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQ_UPDATE -> {
-                if (resultCode == RESULT_OK) {
-                    movies.clear()
-                    movies.addAll(movieDAO.getAllMovies())
-                    binding.recyclerView.adapter?.notifyDataSetChanged()
-                } else {
-                    Toast.makeText(this@MainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
-                }
-            }
-            REQ_ADD -> {
-                if (resultCode == RESULT_OK) {
-                    movies.clear()
-                    movies.addAll(movieDAO.getAllMovies())
-                    binding.recyclerView.adapter?.notifyDataSetChanged()
-                } else {
-                    Toast.makeText(this@MainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-     private fun showDeleteDialog(position: Int) {
+    private fun showDeleteDialog(position: Int) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage("${movies[position].title} 기록을 삭제하시겠습니까?")
             .setPositiveButton("삭제") { _, _ ->
@@ -93,31 +77,52 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            REQ_UPDATE, REQ_ADD -> {
+                if (resultCode == RESULT_OK) {
+                    updateList()
+                } else {
+                    Toast.makeText(this@MainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun updateList() {
+        movies.clear()
+        movies.addAll(movieDAO.getAllMovies())
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super .onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val builder = AlertDialog.Builder(this@MainActivity)
         when(item.itemId) {
             R.id.action_add -> {
-                startActivity(Intent(this, AddActivity::class.java))
+                startActivityForResult(Intent(this, AddActivity::class.java), REQ_ADD)
+                return true
             }
             R.id.action_about -> {
                 startActivity(Intent(this, AboutActivity::class.java))
+                return true
             }
             R.id.action_exit -> {
                 AlertDialog.Builder(this@MainActivity)
                     .setTitle("앱 종료")
                     .setMessage("앱을 종료하시겠습니까?")
                     .setPositiveButton("종료") { dialog, _ ->
-                        dialog.dismiss()
                         finish()
                     }
                     .setNegativeButton("취소") { dialog, _ ->
                         dialog.dismiss()
                     }
+                    .show()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)

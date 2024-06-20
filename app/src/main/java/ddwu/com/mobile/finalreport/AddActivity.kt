@@ -20,7 +20,6 @@ class AddActivity : AppCompatActivity() {
 
         addMovieBinding.btnAddSave.setOnClickListener {
             val title = addMovieBinding.etAddTitle.text.toString()
-            val image = addMovieBinding.etAddImage.text.toString().toIntOrNull() ?: 0
             val rate = addMovieBinding.rbAddRate.rating
             val actor = addMovieBinding.etAddActor.text.toString()
             val director = addMovieBinding.etAddDirector.text.toString()
@@ -28,7 +27,7 @@ class AddActivity : AppCompatActivity() {
             val watchDate = addMovieBinding.etAddWatchDate.text.toString()
 
             if (title.isNotEmpty() && rate > 0 && watchDate.isNotEmpty()) {
-                if (addMovie(MovieDTO(0, title, image, rate, actor, director, releaseDate, watchDate)) > 0
+                if (addMovie(MovieDTO(0, title, 0, rate, actor, director, releaseDate, watchDate)) > 0
                 ) {
                     setResult(RESULT_OK)
                     Toast.makeText(this, "영화가 추가되었습니다.", Toast.LENGTH_SHORT).show()
