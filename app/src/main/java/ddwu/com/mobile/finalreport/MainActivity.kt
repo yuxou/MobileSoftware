@@ -5,7 +5,7 @@ package ddwu.com.mobile.finalreport
 분반: 01분반
 학번: 20220777
 성명: 신유주
-제출일: 2024년 6월
+제출일: 2024년 6월 22일
  */
 
 import android.content.Intent
