@@ -81,7 +81,8 @@ class UpdateActivity : AppCompatActivity() {
 
         val updateValue = ContentValues().apply {
             put(MovieDBHelper.COL_TITLE, dto.title)
-            put(MovieDBHelper.COL_IMAGE, dto.image)
+            //put(MovieDBHelper.COL_IMAGE, dto.image)
+            put(MovieDBHelper.COL_IMAGE, R.mipmap.sample)
             put(MovieDBHelper.COL_RATE, dto.rate)
             put(MovieDBHelper.COL_ACTOR, dto.actor)
             put(MovieDBHelper.COL_DIRECTOR, dto.director)
